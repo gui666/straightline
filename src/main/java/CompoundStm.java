@@ -17,9 +17,16 @@ public class CompoundStm extends Stm {
              ", stm2=" + stm2 +
              '}';
    }
-
    @Override
    public Tree.Node<String> toTree() {
-      return Tree.of("CompoundStm", stm1.toTree(), stm2.toTree());
+      return Tree.of("Compound",stm1.toTree(),stm2.toTree());
    }
+
+   @Override
+   int maxargs() {
+      return Math.max(stm1.maxargs(),stm2.maxargs()) ;
+   }
+
+
+
 }

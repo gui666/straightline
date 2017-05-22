@@ -1,5 +1,3 @@
-import javaslang.collection.Tree;
-
 public class AssignStm extends Stm {
 
    public final String id;
@@ -20,6 +18,6 @@ public class AssignStm extends Stm {
 
    @Override
    public Tree.Node<String> toTree() {
-      return Tree.of("AssignStm", Tree.of(id), exp.toTree());
+      return Tree.of("AssignStm",Tree.of(id),exp.toTree());
    }
 }

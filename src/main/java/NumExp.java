@@ -1,3 +1,4 @@
+import javaslang.Value;
 import javaslang.collection.Tree;
 
 public class NumExp extends Exp {
@@ -16,6 +17,11 @@ public class NumExp extends Exp {
 
    @Override
    public Tree.Node<String> toTree() {
-      return Tree.of("NumExp " + num);
+      return Tree.of("NumExp"+num);
+   }
+
+   @Override
+   int maxargs() {
+      return 0;
    }
 }

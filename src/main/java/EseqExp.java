@@ -20,6 +20,6 @@ public class EseqExp extends Exp {
 
    @Override
    public Tree.Node<String> toTree() {
-      return Tree.of("EseqExp", stm.toTree(), exp.toTree());
+      return Tree.of("EseqExp",stm.toTree(),exp.toTree());
    }
 }

@@ -1,6 +1,8 @@
 import javaslang.collection.Tree;
 
 public class IdExp extends Exp {
+
+
    public final String id;
 
    public IdExp(String id) {
@@ -13,9 +15,13 @@ public class IdExp extends Exp {
              "id='" + id + '\'' +
              '}';
    }
-
    @Override
    public Tree.Node<String> toTree() {
-      return Tree.of("IdExp " + id);
+      return Tree.of("IdExo"+id);
+   }
+
+   @Override
+   int maxargs() {
+      return 0;
    }
 }

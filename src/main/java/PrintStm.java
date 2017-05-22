@@ -15,9 +15,13 @@ public class PrintStm extends Stm {
              "exps=" + exps +
              '}';
    }
+    @Override
+    public Tree.Node<String> toTree() {
+        return Tree.of("PrintStm",exps.map(Exp::toTree));
+    }
 
-   @Override
-   public Tree.Node<String> toTree() {
-      return Tree.of("PrintStm", exps.map(Exp::toTree));
-   }
+    @Override
+    int maxargs() {
+        return exps.length();
+    }
 }
