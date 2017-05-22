@@ -16,6 +16,7 @@ public class Main {
 
        System.out.println(p);
        System.out.println(p.toTree().draw());
+       System.out.println(Boxes.box(p.toTree()));
         System.out.println("maxargs:"+p.maxargs());
        System.out.println("Execução ");
        p.interp(new HashMap<String,Integer>());
