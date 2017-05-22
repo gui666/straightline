@@ -1,9 +1,11 @@
+
 import javaslang.collection.List;
+
+import java.util.HashMap;
 
 public class Main {
 
    public static void main(String[] args) {
-
       Stm p = new CompoundStm(new AssignStm("x",
                                             new OpExp(new NumExp(2),
                                                       new OpExp(new NumExp(3),
@@ -12,7 +14,10 @@ public class Main {
                                                       OpExp.Op.PLUS)),
                               new PrintStm(List.of(new IdExp("x"))));
 
-      System.out.println(p);
-
+       System.out.println(p);
+       System.out.println(p.toTree().draw());
+        System.out.println("maxargs:"+p.maxargs());
+       System.out.println("Execução ");
+       p.interp(new HashMap<String,Integer>());
    }
 }

@@ -1,3 +1,7 @@
+import javaslang.collection.Tree;
+
+import java.util.Map;
+
 public class CompoundStm extends Stm {
 
    public final Stm stm1;
@@ -14,5 +18,20 @@ public class CompoundStm extends Stm {
              "stm1=" + stm1 +
              ", stm2=" + stm2 +
              '}';
+   }
+   @Override
+   public Tree.Node<String> toTree() {
+      return Tree.of("Compound",stm1.toTree(),stm2.toTree());
+   }
+
+   @Override
+   public int maxargs() {
+      return Math.max(stm1.maxargs(),stm2.maxargs()) ;
+   }
+
+   @Override
+   public void interp(Map<String, Integer> mem) {
+      stm1.interp(mem);
+      stm2.interp(mem);
    }
 }

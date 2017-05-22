@@ -1,4 +1,7 @@
 import javaslang.collection.List;
+import javaslang.collection.Tree;
+
+import java.util.Map;
 
 public class PrintStm extends Stm {
 
@@ -14,4 +17,24 @@ public class PrintStm extends Stm {
              "exps=" + exps +
              '}';
    }
+    @Override
+    public Tree.Node<String> toTree() {
+        return Tree.of("PrintStm",exps.map(Exp::toTree));
+    }
+
+    @Override
+    public void interp(Map<String, Integer> mem) {
+        exps.forEach(e -> System.out.println(e.eval(mem)));
+        System.out.println();
+//        for(Exp e : exps)
+//            System.out.println(e.eval(mem));
+    }
+
+    @Override
+    public int maxargs() {
+        int aux = exps.length();
+        for(Exp e : exps)
+            aux = Math.max(aux,e.maxargs());
+        return aux;
+    }
 }
