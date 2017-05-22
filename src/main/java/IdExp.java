@@ -1,25 +1,21 @@
 import javaslang.collection.Tree;
 
-public class AssignStm extends Stm {
-
+public class IdExp extends Exp {
    public final String id;
-   public final Exp exp;
 
-   public AssignStm(String id, Exp exp) {
+   public IdExp(String id) {
       this.id = id;
-      this.exp = exp;
    }
 
    @Override
    public String toString() {
-      return "AssignStm{" +
+      return "IdExp{" +
              "id='" + id + '\'' +
-             ", exp=" + exp +
              '}';
    }
 
    @Override
    public Tree.Node<String> toTree() {
-      return Tree.of("AssignStm", Tree.of(id), exp.toTree());
+      return Tree.of("IdExp " + id);
    }
 }
